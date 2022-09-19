@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use OneSignal;
+use Str;
+
 
 class PostController extends Controller
 {
@@ -41,6 +44,12 @@ class PostController extends Controller
             'content' => $request->content,
         ]);
 
+        $slug = Str::slug($request->title, '-');
+
+        OneSignal::sendNotificationToAll(
+            $request->title,
+        );
+
         return redirect(route('post.index'))->with('success', 'Berhasil menambahkan post');
     }
 
@@ -52,7 +61,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('post.show', compact('post'));
     }
 
     /**

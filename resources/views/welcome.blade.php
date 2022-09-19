@@ -19,6 +19,16 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        {{-- OneSignal --}}
+        <script>
+            window.OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+                OneSignal.init({
+                    appId: "6b34596a-b4ce-459b-b042-6ac0aaebbaf8",
+                });
+            });
+            </script>
+        {{-- /OneSignal --}}
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
